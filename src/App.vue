@@ -1,17 +1,36 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app"></div>
+  Hello {{ person.firstName }} {{ person.lastName }}<br />
+  hello {{ fullName }} <br />
+  Number of articles: {{ articleCount }}
+  <button @click="addArticle">Add Article</button>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  name: "App",
+  data() {
+    //these 2 vars articlecount and person can be used as vars in our templates
+    return {
+      articleCount: 0,
+      person: {
+        firstName: "Aaron",
+        lastName: "Doggo",
+      },
+    };
+  },
+  //everything we have as computed can be used as a var in our template sections
+  computed: {
+    fullName() {
+      return `${this.person.firstName} ${this.person.lastName}`;
+    },
+  },
+  methods: {
+    addArticle() {
+      this.articleCount++;
+    },
+  },
+};
 </script>
 
 <style>
