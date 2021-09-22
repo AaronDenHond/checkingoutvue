@@ -3,6 +3,7 @@
   Hello {{ person.firstName }} {{ person.lastName }}<br />
   hello {{ fullName }} <br />
   Number of articles: {{ articleCount }}
+   <!-- eventlistener -->
   <button @click="addArticle">Add Article</button>
 </template>
 
@@ -30,6 +31,13 @@ export default {
       this.articleCount++;
     },
   },
+  watch: {
+    articleCount(newArticleCount,oldArticleCount) {
+    if(newArticleCount !== oldArticleCount) {
+      console.log("An article was added");
+    }
+  }
+  }
 };
 </script>
 
